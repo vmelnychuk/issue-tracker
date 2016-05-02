@@ -1,0 +1,8 @@
+## Maven
+*.jar
+target
+
+## Eclipse
+.classpath
+.settings/
+.project
