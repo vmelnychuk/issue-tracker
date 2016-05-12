@@ -50,7 +50,7 @@ public class Main {
         server.setHandler(handlers);
 
         try {
-            log.info("starting Jetty");
+            log.info("starting Jetty at http://localhost:" + PORT);
             server.start();
             server.join();
         } catch (InterruptedException e) {
