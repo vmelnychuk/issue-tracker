@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="css/main.css">
+<meta charset="utf-8">
+<title>Main Page</title>
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-	<h1>Hello</h1>
-	<script src="js/main.js"></script>
+    <div id="container">
+        <div id="admin-pane">
+            <h2>Admin Pane</h2>
+            <ul>
+                <li><a href="/admin?action=allUsers">Get all users</a></li>
+                <li><a href="/register">Add user</a></li>
+                <li><a href="/login">Login user</a>
+                <li><a href="#" onclick="logOut()">Log out</a>
+            </ul>
+        </div>
+    </div>
+    <script src="/js/main.js"></script>
 </body>
 </html>

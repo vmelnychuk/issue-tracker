@@ -9,6 +9,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import server.issuetracker.db.DataBaseService;
 import server.issuetracker.service.UserService;
 import server.issuetracker.service.UserServiceWithCollection;
 import server.issuetracker.web.servlet.AdminServlet;
@@ -26,10 +27,13 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        LoginServlet loginServlet = new LoginServlet();
 
         UserService userService = new UserServiceWithCollection();
+        
+        DataBaseService dataBaseService = new DataBaseService();
+        dataBaseService.printConnectInfo();
 
+        LoginServlet loginServlet = new LoginServlet(userService);
         RegistrationServlet registrationServlet = new RegistrationServlet(userService);
         AdminServlet adminServlet = new AdminServlet(userService);
 
