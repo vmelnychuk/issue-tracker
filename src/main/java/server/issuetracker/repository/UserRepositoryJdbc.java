@@ -1,9 +1,10 @@
 package server.issuetracker.repository;
 
-import java.sql.Connection;
-
 import server.issuetracker.bean.user.User;
 import server.issuetracker.db.Executor;
+
+import java.sql.Connection;
+import java.util.Collection;
 
 public class UserRepositoryJdbc implements UserRepository {
     private static final String USER_TABLE = "users";
@@ -21,15 +22,24 @@ public class UserRepositoryJdbc implements UserRepository {
     }
 
     @Override
-    public long getUserId(String login) {
-        // TODO Auto-generated method stub
-        return 0;
+    public User getByLogin(String login) {
+        return null;
+    }
+
+    @Override
+    public Collection<User> getAll() {
+        return null;
     }
 
     @Override
     public long addUser(User user) {
-        // TODO Auto-generated method stub
+
         return 0;
+    }
+
+    @Override
+    public void remove(String login) {
+
     }
 
     @Override
@@ -42,6 +52,14 @@ public class UserRepositoryJdbc implements UserRepository {
     public void dropTable() {
         // TODO Auto-generated method stub
         
+    }
+
+    private void cleanUp() {
+        dropTable();
+    }
+
+    private void setUp() {
+        createTable();
     }
 
 }

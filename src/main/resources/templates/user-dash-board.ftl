@@ -8,5 +8,8 @@
 <body>
     <p>Login: ${login}</p>
     <p>Password: ${password}</p>
+    <p>First Name: ${first_name}</p>
+    <p>Last Name: ${last_name}</p>
+    <p>Role: ${role}</p>
 </body>
 </html>

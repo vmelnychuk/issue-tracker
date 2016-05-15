@@ -1,13 +1,22 @@
 package server.issuetracker.bean.user;
 
 public class User {
+    private long id;
     private String firstName;
     private String lastName;
-    private String email;
+    private String login;
     private String password;
     private Role role;
     
     public User() {}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -25,12 +34,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {

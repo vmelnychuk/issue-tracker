@@ -9,3 +9,7 @@ target
 
 ## H2
 *.db
+
+## Idea
+.idea
+issuetracker.iml

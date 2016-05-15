@@ -9,18 +9,22 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import server.issuetracker.db.DBService;
 import server.issuetracker.db.DataBaseService;
-import server.issuetracker.service.UserService;
-import server.issuetracker.service.UserServiceWithCollection;
+import server.issuetracker.repository.UserRepository;
+import server.issuetracker.repository.UserRepositoryJdbc;
+import server.issuetracker.service.*;
 import server.issuetracker.web.servlet.AdminServlet;
 import server.issuetracker.web.servlet.LoginServlet;
 import server.issuetracker.web.servlet.RegistrationServlet;
+import server.issuetracker.web.servlet.UserDashboard;
 
 public class Main {
     private static final int PORT = 8080;
     private static final String LOGIN_FORM = "/login";
     private static final String REGISTER_FORM = "/register";
     private static final String ADMIN_PANE = "/admin";
+    private static final String DASHBOARD = "/dash-board";
 
     private static final String STATIC_FILES = "static_files";
 
@@ -28,14 +32,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        UserService userService = new UserServiceWithCollection();
-        
-        DataBaseService dataBaseService = new DataBaseService();
-        dataBaseService.printConnectInfo();
+        DataBaseService dataBaseService = new DBService();
+        dataBaseService.printConnectionInfo();
 
-        LoginServlet loginServlet = new LoginServlet(userService);
+        UserRepository userRepository = new UserRepositoryJdbc(dataBaseService.getConnection());
+        UserService userService = new UserServiceWithJDBC(userRepository);
+        LoginService loginService = new LoginServiceWithCollection(userService);
+
+        LoginServlet loginServlet = new LoginServlet(loginService);
         RegistrationServlet registrationServlet = new RegistrationServlet(userService);
         AdminServlet adminServlet = new AdminServlet(userService);
+        UserDashboard userDashboard = new UserDashboard(loginService);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
@@ -43,6 +50,7 @@ public class Main {
         context.addServlet(new ServletHolder(loginServlet), LOGIN_FORM);
         context.addServlet(new ServletHolder(registrationServlet), REGISTER_FORM);
         context.addServlet(new ServletHolder(adminServlet), ADMIN_PANE);
+        context.addServlet(new ServletHolder(userDashboard), DASHBOARD);
 
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase(STATIC_FILES);

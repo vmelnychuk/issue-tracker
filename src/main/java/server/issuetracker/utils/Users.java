@@ -8,7 +8,7 @@ public class Users {
     
     public static User createUser(String login, String password, String firstName, String lastName) {
         User user = new User();
-        user.setEmail(login);
+        user.setLogin(login);
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
@@ -18,7 +18,7 @@ public class Users {
 
     public static User createAdmin(String login, String password, String firstName, String lastName) {
         User user = new User();
-        user.setEmail(login);
+        user.setLogin(login);
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
