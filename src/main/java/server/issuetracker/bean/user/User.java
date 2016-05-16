@@ -1,5 +1,7 @@
 package server.issuetracker.bean.user;
 
+import java.util.Locale;
+
 public class User {
     private long id;
     private String firstName;
@@ -56,6 +58,10 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+    
+    public void setRole(String roleName) {
+        this.role = Role.valueOf(roleName.toUpperCase(Locale.ENGLISH));
     }
     
     public void update(User user) {

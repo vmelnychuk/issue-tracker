@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserDashboard extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
     private static final String DASH_BOARD = "user-dash-board.ftl";
 
     private final LoginService loginService;

@@ -24,12 +24,11 @@ public class UserServiceWithJDBC implements UserService {
 
     @Override
     public void addUser(User user) {
-        userRepository.createTable();
         userRepository.addUser(user);
     }
 
     @Override
     public void remove(String login) {
-        userRepository.remove(login);
+        userRepository.removeByLogin(login);
     }
 }

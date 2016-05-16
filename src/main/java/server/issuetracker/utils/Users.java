@@ -22,7 +22,7 @@ public class Users {
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setRole(Role.ADMINISTRATOR);
+        user.setRole(Role.ADMIN);
         return user;
     }
     

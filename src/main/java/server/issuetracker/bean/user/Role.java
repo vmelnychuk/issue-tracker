@@ -1,7 +1,7 @@
 package server.issuetracker.bean.user;
 
 public enum Role {
-    GUEST("guest"), USER("user"), ADMINISTRATOR("admin");
+    GUEST("guest"), USER("user"), ADMIN("admin");
 
     private String title;
 

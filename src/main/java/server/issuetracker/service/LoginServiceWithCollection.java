@@ -33,7 +33,7 @@ public class LoginServiceWithCollection implements LoginService {
     @Override
     public User checkLogin(String login, String password) {
         User user = userService.getUserByLogin(login);
-        if (user != null || user.getPassword().equals(password)) {
+        if (user != null && user.getPassword().equals(password)) {
             return user;
         } else {
             return Users.NULL_USER;
