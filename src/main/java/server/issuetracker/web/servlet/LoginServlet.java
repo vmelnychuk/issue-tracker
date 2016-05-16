@@ -68,12 +68,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         loginService.logIn(req.getSession().getId(), user);
-        Gson gson = new Gson();
-        String json = gson.toJson(user);
-
-        resp.setStatus(HttpServletResponse.SC_OK);
-        resp.setContentType("application/json;charset=utf-8");
-        writer.println(json);
+        resp.sendRedirect(DASHBOARD);
     }
 
     // logout
